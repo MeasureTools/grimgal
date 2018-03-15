@@ -1,0 +1,7 @@
+<RCC>
+  <qresource prefix="/res">
+    <file alias="icon32">res/icon32.png</file>
+    <file alias="icon64">res/icon64.png</file>
+    <file alias="icon128">res/icon128.png</file>
+  </qresource>
+</RCC>

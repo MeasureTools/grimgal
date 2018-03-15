@@ -1,0 +1,667 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="windowModality">
+   <enum>Qt::NonModal</enum>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>653</width>
+    <height>496</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Grimgal</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../res/icon128.png</normaloff>
+    <normalon>../res/icon128.png</normalon>
+    <disabledoff>../res/icon128.png</disabledoff>
+    <disabledon>../res/icon128.png</disabledon>
+    <activeoff>../res/icon128.png</activeoff>
+    <activeon>../res/icon128.png</activeon>
+    <selectedoff>../res/icon128.png</selectedoff>
+    <selectedon>../res/icon128.png</selectedon>../res/icon128.png</iconset>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QHBoxLayout" name="horizontalLayout_2">
+    <item>
+     <widget class="CustomQGLWidget" name="glWidget"/>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>653</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuProject">
+    <property name="title">
+     <string>Pro&amp;ject</string>
+    </property>
+    <widget class="QMenu" name="menuRecent_Projects">
+     <property name="title">
+      <string>&amp;Recent Projects</string>
+     </property>
+    </widget>
+    <addaction name="actionProjectNew"/>
+    <addaction name="actionProjectOpen"/>
+    <addaction name="actionProjectSave"/>
+    <addaction name="actionProjectSaveAs"/>
+    <addaction name="separator"/>
+    <addaction name="menuRecent_Projects"/>
+    <addaction name="separator"/>
+    <addaction name="actionExit"/>
+   </widget>
+   <widget class="QMenu" name="menuMeasurement">
+    <property name="title">
+     <string>&amp;Measurement</string>
+    </property>
+    <widget class="QMenu" name="menuRecent_Measurments">
+     <property name="title">
+      <string>&amp;Recent Measurments</string>
+     </property>
+    </widget>
+    <addaction name="actionMeasurementAdd"/>
+    <addaction name="separator"/>
+    <addaction name="menuRecent_Measurments"/>
+   </widget>
+   <widget class="QMenu" name="menuProbe">
+    <property name="title">
+     <string>&amp;Probe</string>
+    </property>
+    <addaction name="actionProbeNew"/>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>&amp;Help</string>
+    </property>
+    <addaction name="actionAbout"/>
+   </widget>
+   <widget class="QMenu" name="menuSettings">
+    <property name="title">
+     <string>&amp;Settings</string>
+    </property>
+    <addaction name="actionUse_CachedReader"/>
+    <addaction name="actionUse_statistic_reader"/>
+    <addaction name="actionOtherSettings"/>
+   </widget>
+   <widget class="QMenu" name="menuExtras">
+    <property name="title">
+     <string>E&amp;xtras</string>
+    </property>
+    <addaction name="actionTake_Screenshot"/>
+   </widget>
+   <addaction name="menuProject"/>
+   <addaction name="menuMeasurement"/>
+   <addaction name="menuProbe"/>
+   <addaction name="menuSettings"/>
+   <addaction name="menuHelp"/>
+   <addaction name="menuExtras"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QDockWidget" name="measurementDock">
+   <property name="windowTitle">
+    <string>Measurements</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>1</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents_2">
+    <layout class="QVBoxLayout" name="verticalLayout_2">
+     <item>
+      <widget class="QTreeView" name="measurementTree">
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <property name="midLineWidth">
+        <number>0</number>
+       </property>
+       <property name="editTriggers">
+        <set>QAbstractItemView::AllEditTriggers</set>
+       </property>
+       <property name="verticalScrollMode">
+        <enum>QAbstractItemView::ScrollPerPixel</enum>
+       </property>
+       <property name="rootIsDecorated">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="addMeasurmentButton">
+         <property name="text">
+          <string>+</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="removeMeasurementButton">
+         <property name="text">
+          <string>-</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QDockWidget" name="propertyDock">
+   <property name="features">
+    <set>QDockWidget::AllDockWidgetFeatures</set>
+   </property>
+   <property name="windowTitle">
+    <string>Properties</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>1</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents_3">
+    <layout class="QVBoxLayout" name="verticalLayout_3">
+     <item>
+      <widget class="QTableView" name="propertyTable">
+       <attribute name="horizontalHeaderStretchLastSection">
+        <bool>true</bool>
+       </attribute>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QDockWidget" name="probeDock">
+   <property name="windowTitle">
+    <string>Probes</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>8</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents">
+    <layout class="QVBoxLayout" name="verticalLayout_7">
+     <item>
+      <widget class="QTableView" name="probeTable">
+       <attribute name="horizontalHeaderStretchLastSection">
+        <bool>true</bool>
+       </attribute>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QDockWidget" name="eventDock">
+   <property name="windowTitle">
+    <string>Events</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>8</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents_4">
+    <layout class="QVBoxLayout" name="verticalLayout_8">
+     <item>
+      <widget class="QTableView" name="eventTable">
+       <property name="verticalScrollMode">
+        <enum>QAbstractItemView::ScrollPerPixel</enum>
+       </property>
+       <property name="horizontalScrollMode">
+        <enum>QAbstractItemView::ScrollPerPixel</enum>
+       </property>
+       <property name="sortingEnabled">
+        <bool>true</bool>
+       </property>
+       <attribute name="horizontalHeaderStretchLastSection">
+        <bool>true</bool>
+       </attribute>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QDockWidget" name="statisticDock">
+   <property name="windowTitle">
+    <string>Statistics</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>8</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents_5">
+    <layout class="QVBoxLayout" name="verticalLayout_9">
+     <item>
+      <widget class="QTableView" name="statisticTable">
+       <property name="verticalScrollMode">
+        <enum>QAbstractItemView::ScrollPerPixel</enum>
+       </property>
+       <property name="horizontalScrollMode">
+        <enum>QAbstractItemView::ScrollPerPixel</enum>
+       </property>
+       <property name="sortingEnabled">
+        <bool>true</bool>
+       </property>
+       <attribute name="horizontalHeaderStretchLastSection">
+        <bool>true</bool>
+       </attribute>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <action name="actionProbeNew">
+   <property name="text">
+    <string>&amp;New</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+P</string>
+   </property>
+  </action>
+  <action name="actionMeasurementAdd">
+   <property name="text">
+    <string>&amp;Add</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+M</string>
+   </property>
+  </action>
+  <action name="actionProjectNew">
+   <property name="text">
+    <string>&amp;New</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
+   </property>
+  </action>
+  <action name="actionProjectOpen">
+   <property name="text">
+    <string>&amp;Open</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
+  </action>
+  <action name="actionProjectSave">
+   <property name="text">
+    <string>&amp;Save</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+  </action>
+  <action name="actionProjectSaveAs">
+   <property name="text">
+    <string>Sa&amp;ve as ...</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+S</string>
+   </property>
+  </action>
+  <action name="actionMeasurments">
+   <property name="text">
+    <string>Measurments</string>
+   </property>
+  </action>
+  <action name="actionProperties">
+   <property name="text">
+    <string>Properties</string>
+   </property>
+  </action>
+  <action name="actionProbes">
+   <property name="text">
+    <string>Probes</string>
+   </property>
+  </action>
+  <action name="actionEvents">
+   <property name="text">
+    <string>Events</string>
+   </property>
+  </action>
+  <action name="actionStatistics">
+   <property name="text">
+    <string>Statistics</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="text">
+    <string>&amp;About</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+H</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string>E&amp;xit</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
+   </property>
+  </action>
+  <action name="actionUse_CachedReader">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Use &amp;cached reader</string>
+   </property>
+  </action>
+  <action name="actionOtherSettings">
+   <property name="text">
+    <string>&amp;Other Settings</string>
+   </property>
+  </action>
+  <action name="actionUse_statistic_reader">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Use &amp;statistic reader</string>
+   </property>
+  </action>
+  <action name="actionClear_menu">
+   <property name="text">
+    <string>Clear &amp;Menu</string>
+   </property>
+  </action>
+  <action name="actionClear_Menu">
+   <property name="text">
+    <string>Clear &amp;Menu</string>
+   </property>
+  </action>
+  <action name="actionTake_Screenshot">
+   <property name="text">
+    <string>&amp;Screenshot</string>
+   </property>
+  </action>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>CustomQGLWidget</class>
+   <extends>QOpenGLWidget</extends>
+   <header>../src/widget/customqglwidget.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>actionProjectNew</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>newProject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>234</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionProjectOpen</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>openProject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>234</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionProjectSave</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>saveProject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>234</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionProjectSaveAs</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>saveAsProject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>234</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionMeasurementAdd</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>addMeasurement()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>234</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionProbeNew</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>addProbe()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>234</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>measurementTree</sender>
+   <signal>doubleClicked(QModelIndex)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>changeMeasurementColor(QModelIndex)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>136</x>
+     <y>82</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>331</x>
+     <y>187</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>addMeasurmentButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>addMeasurement()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>137</x>
+     <y>136</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>326</x>
+     <y>247</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>removeMeasurementButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>removeMeasurement()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>223</x>
+     <y>136</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>326</x>
+     <y>247</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionAbout</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>about()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>326</x>
+     <y>247</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionExit</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>326</x>
+     <y>247</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionUse_CachedReader</sender>
+   <signal>triggered(bool)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>setUseCachedReader(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>326</x>
+     <y>247</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionUse_statistic_reader</sender>
+   <signal>triggered(bool)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>setUseStatisticReader(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>326</x>
+     <y>247</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionOtherSettings</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>showOtherSettings()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>326</x>
+     <y>247</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionTake_Screenshot</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>takeScreenshot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>326</x>
+     <y>247</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>newProject()</slot>
+  <slot>openProject()</slot>
+  <slot>saveProject()</slot>
+  <slot>saveAsProject()</slot>
+  <slot>addMeasurement()</slot>
+  <slot>addProbe()</slot>
+  <slot>changeMeasurementColor(QModelIndex)</slot>
+  <slot>removeMeasurement()</slot>
+  <slot>about()</slot>
+  <slot>setUseCachedReader(bool)</slot>
+  <slot>setUseStatisticReader(bool)</slot>
+  <slot>showOtherSettings()</slot>
+  <slot>takeScreenshot()</slot>
+ </slots>
+</ui>

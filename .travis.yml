@@ -1,0 +1,28 @@
+sudo: true
+dist: trusty
+
+cache:
+    apt: true
+    ccache: true
+
+language: cpp
+
+services:
+  - docker
+
+## SRC: https://stackoverflow.com/questions/15674064/github-submodule-access-rights-travis-ci
+# Handle git submodules yourself
+git:
+    submodules: false
+# Use sed to replace the SSH URL with the public URL, then initialize submodules
+before_install:
+    - sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules
+    - git submodule update --init --recursive
+
+matrix:
+  include:
+  - install: .travis-ci/install_docker.sh
+    script: 
+      - .travis-ci/load_docker_image.sh 'base/archlinux' 'grimgal'
+      - .travis-ci/docker_bash.sh 'grimgal' 'pacman -Syu --noconfirm clang cmake boost boost-libs clang-tools-extra make'
+      - .travis-ci/docker_bash.sh 'grimgal' 'cd grimgal; mkdir build; cd build; cmake ..; make'

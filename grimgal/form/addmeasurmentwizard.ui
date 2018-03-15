@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AddMeasurmentWizard</class>
+ <widget class="QWizard" name="AddMeasurmentWizard">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>376</width>
+    <height>326</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Add Measurment</string>
+  </property>
+  <property name="wizardStyle">
+   <enum>QWizard::ClassicStyle</enum>
+  </property>
+  <widget class="QWizardPage" name="wizardPage1">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QLineEdit" name="filename">
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+      <property name="placeholderText">
+       <string/>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QGroupBox" name="groupBox">
+      <property name="title">
+       <string>Reader</string>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="QListView" name="readerListView"/>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QCheckBox" name="useCache">
+      <property name="toolTip">
+       <string>Read data are cached in memory. This reduces disk IO but increases memory usage a lot!</string>
+      </property>
+      <property name="accessibleName">
+       <string/>
+      </property>
+      <property name="text">
+       <string>Use caching</string>
+      </property>
+      <property name="checked">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QCheckBox" name="useAnalysis">
+      <property name="toolTip">
+       <string>Not every measurment file format supports statistic information like max value or AVG. By reading the whole file additrional information can be calculated. This may takes a while for big files.</string>
+      </property>
+      <property name="text">
+       <string>Additional data analysis</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

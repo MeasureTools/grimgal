@@ -1,0 +1,3 @@
+[submodule "extern/readerlib"]
+	path = extern/readerlib
+	url = git@github.com:MeasureTools/readerlib.git
