@@ -34,7 +34,7 @@ The tool utilize the [readerlib](https://github.com/MeasureTools/readerlib).
 
 ```bash
 git clone --recursive https://github.com/MeasureTools/grimgal.git grimgal
-cd climgal
+cd grimgal
 mkdir build
 cd build
 cmake ..
