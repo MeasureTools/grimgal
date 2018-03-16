@@ -24,5 +24,5 @@ matrix:
   - install: .travis-ci/install_docker.sh
     script: 
       - .travis-ci/load_docker_image.sh 'base/archlinux' 'grimgal'
-      - .travis-ci/docker_bash.sh 'grimgal' 'pacman -Syu --noconfirm clang cmake boost boost-libs clang-tools-extra make qt5-base qt5-tools qt5-translations'
+      - .travis-ci/docker_bash.sh 'grimgal' 'pacman -Syu --noconfirm clang cmake boost boost-libs clang-tools-extra make qt5-base qt5-tools qt5-translations extra-cmake-modules'
       - .travis-ci/docker_bash.sh 'grimgal' 'cd grimgal; mkdir build; cd build; cmake ..; make'
