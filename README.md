@@ -17,8 +17,7 @@ The tool utilize the [readerlib](https://github.com/MeasureTools/readerlib).
 
 ## Usage
 
-![Grimgal loaded with an CSV example file]
-(https://github.com/MeasureTools/grimgal/raw/master/docs/img/grimgal_in_action_numbers.png)
+![Grimgal loaded with an CSV example file](docs/img/grimgal_in_action_numbers.png)
 
 
 1. Here different Measurements can be modified (e.g. make a measurement or sensor visible or invisible)
