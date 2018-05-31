@@ -81,5 +81,8 @@ set (RESOURCES
 qt5_wrap_ui(UI_HEADERS ${UIS})
 add_executable(${PROJECT_NAME} ${SOURCES} ${RESOURCES} ${UI_HEADERS})
 
-qt5_use_modules(${PROJECT_NAME} Core Widgets Xml)
-target_link_libraries(${PROJECT_NAME} readerlib_s)
+find_package( Qt5Core REQUIRED )
+find_package( Qt5Widgets REQUIRED )
+find_package( Qt5Xml REQUIRED )
+
+target_link_libraries(${PROJECT_NAME} readerlib_s Qt5::Core Qt5::Widgets Qt5::Xml )
